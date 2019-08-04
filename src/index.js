@@ -1,23 +1,5 @@
 const { GraphQLServer } = require('graphql-yoga');
 
-// Define GraphQL schema
-const typeDefs = `type Query {
-  info: String!
-  feed: [Link!]!
-    
-},
-
-type Mutation {
-  post(url: String!, description: String!): Link!
-}
-
-type Link {
-  id: ID!
-  description: String!
-  url: String!
-}
-`;
-
 // Add dummy data, store in links variate at runtime
 let links = [
   {
@@ -27,6 +9,8 @@ let links = [
   }
 ];
 
+let idCount = links.length;
+
 // Implement GraphQL schema
 const resolvers = {
   Query: {
@@ -34,16 +18,29 @@ const resolvers = {
     feed: () => links
   },
 
-  Link: {
-    id: parent => parent.id,
-    description: parent => parent.description,
-    url: parent => parent.url
+  Mutation: {
+    post: (parent, args) => {
+      // Add an integer variable to generate unique IDs for newly created Link elements.
+      const link = {
+        id: `link-${idCount++}`,
+        description: args.description,
+        url: args.url
+      };
+      links.push(link);
+      return link;
+    }
   }
+  // Link resolvers removed bc unnecessary: GraphQL server infers what they look like
+  // Link: {
+  //   id: parent => parent.id,
+  //   description: parent => parent.description,
+  //   url: parent => parent.url
+  // }
 };
 
 // Bundle and pass the schema and resolvers to the GraphQLServer imported from graphql-yoga
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: './src/schema.graphql',
   resolvers
 });
 
