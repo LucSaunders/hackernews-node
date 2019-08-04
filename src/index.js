@@ -3,9 +3,13 @@ const { GraphQLServer } = require('graphql-yoga');
 // Define GraphQL schema
 const typeDefs = `type Query {
   info: String!
-    feed: [Link!]!
+  feed: [Link!]!
     
 },
+
+type Mutation {
+  post(url: String!, description: String!): Link!
+}
 
 type Link {
   id: ID!
