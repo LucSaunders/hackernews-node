@@ -1,0 +1,10 @@
+# The http endpoint for the Prisma API
+endpoint: ''
+
+# Point to the datamodel file that is the foundation for the Prisma client API to be used in the API server
+datamodel: datamodel.prisma
+
+# Specify language & location for the generated Prisma client
+generate:
+  - generator: javascript-client
+output: ../src/generated/prisma-client
