@@ -1,10 +1,22 @@
-# The http endpoint for the Prisma API
-endpoint: ''
+# # The http endpoint for the Prisma API
+# endpoint: ''
 
-# Point to the datamodel file that is the foundation for the Prisma client API to be used in the API server
+# # Point to the datamodel file that is the foundation for the Prisma client API to be used in the API server
+# datamodel: datamodel.prisma
+
+# # Specify language & location for the generated Prisma client
+# generate:
+#   - generator: javascript-client,
+# output: ../src/generated/prisma-client
+
+# The HTTP endpoint for your Prisma API
+#endpoint: ''
+endpoint: https://us1.prisma.sh/luc-saunders-564b77/hackernews-node/dev
+
+# Points to the file that contains your datamodel
 datamodel: datamodel.prisma
 
-# Specify language & location for the generated Prisma client
+# Specifies language & location for the generated Prisma client
 generate:
   - generator: javascript-client
-output: ../src/generated/prisma-client
+    output: ../src/generated/prisma-client
