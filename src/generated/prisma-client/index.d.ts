@@ -2,13 +2,14 @@
 // Please don't change this file manually but run `prisma generate` to update it.
 // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-import { DocumentNode } from "graphql";
+// pesonal note: THIS FILE IS HERE SO THAT THE IDE (VISUAL STUDIO CODE) CAN HELP WITH AUTOCOMPLETION WHEN READING AND WRITING DATA USING THE PRISMA CLIENT
+import { DocumentNode } from 'graphql';
 import {
   makePrismaClientClass,
   BaseClientOptions,
   Model
-} from "prisma-client-lib";
-import { typeDefs } from "./prisma-schema";
+} from 'prisma-client-lib';
+import { typeDefs } from './prisma-schema';
 
 export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
@@ -102,16 +103,16 @@ export interface ClientConstructor<T> {
  */
 
 export type LinkOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "description_ASC"
-  | "description_DESC"
-  | "url_ASC"
-  | "url_DESC";
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'description_ASC'
+  | 'description_DESC'
+  | 'url_ASC'
+  | 'url_DESC';
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+export type MutationType = 'CREATED' | 'UPDATED' | 'DELETED';
 
 export type LinkWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
@@ -418,7 +419,7 @@ export type Long = string;
 
 export const models: Model[] = [
   {
-    name: "Link",
+    name: 'Link',
     embedded: false
   }
 ];
