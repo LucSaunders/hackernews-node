@@ -3,12 +3,7 @@ const { prisma } = require('./generated/prisma-client');
 
 // Implement GraphQL schema
 const resolvers = {
-  Query: {
-    info: () => `This is the API of a Hackernews clone`,
-    feed: (root, args, context, info) => {
-      return context.prisma.links();
-    }
-  },
+  
 
   Mutation: {
     post: (root, args, context) => {
